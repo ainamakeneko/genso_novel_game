@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>元素の墓標</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="game-container">
+        <!-- Background -->
+        <div id="background"></div>
+        
+        <!-- Character sprites -->
+        <div id="character-container">
+            <div id="character-left" class="character"></div>
+            <div id="character-center" class="character"></div>
+            <div id="character-right" class="character"></div>
+        </div>
+        
+        <!-- UI Elements -->
+        <div id="ui-container">
+            <!-- Text box -->
+            <div id="text-box">
+                <div id="speaker-name"></div>
+                <div id="text-content"></div>
+                <div id="continue-indicator">▼</div>
+            </div>
+            
+            <!-- Choice buttons -->
+            <div id="choice-container" class="hidden">
+                <button class="choice-btn" id="choice-1"></button>
+                <button class="choice-btn" id="choice-2"></button>
+                <button class="choice-btn" id="choice-3"></button>
+            </div>
+            
+            <!-- Menu -->
+            <div id="menu-container">
+                <button id="menu-btn">メニュー</button>
+                <div id="menu-dropdown" class="hidden">
+                    <button id="save-btn">セーブ</button>
+                    <button id="load-btn">ロード</button>
+                    <button id="title-btn">タイトルに戻る</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Title screen -->
+        <div id="title-screen">
+            <h1>元素の墓標</h1>
+            <div id="title-menu">
+                <button id="start-btn">ゲーム開始</button>
+                <button id="continue-btn">続きから</button>
+                <button id="chapter-select-btn">話数選択</button>
+            </div>
+        </div>
+        
+        <!-- Chapter selection screen -->
+        <div id="chapter-select-screen" class="hidden">
+            <div id="chapter-select-title">話数選択 - 周期表</div>
+            <div id="chapter-select-grid">
+                <div class="chapter-element" data-chapter="chapter1">
+                    <div class="element-number">1</div>
+                    <div class="element-symbol">Fr</div>
+                    <div class="element-name">欠番146と失われた手帖</div>
+                </div>
+                <div class="chapter-element" data-chapter="chapter2">
+                    <div class="element-number">2</div>
+                    <div class="element-symbol">Md</div>
+                    <div class="element-name">夢で見た周期表</div>
+                </div>
+                <div class="chapter-element" data-chapter="chapter3">
+                    <div class="element-number">3</div>
+                    <div class="element-symbol">Cu</div>
+                    <div class="element-name">架空の科学者《カリユ》</div>
+                </div>
+                <div class="chapter-element" data-chapter="chapter4">
+                    <div class="element-number">4</div>
+                    <div class="element-symbol">Yp</div>
+                    <div class="element-name">削除された毒</div>
+                </div>
+                <div class="chapter-element" data-chapter="chapter5">
+                    <div class="element-number">5</div>
+                    <div class="element-symbol">U</div>
+                    <div class="element-name">引き金の光</div>
+                </div>
+                <div class="chapter-element" data-chapter="chapter6">
+                    <div class="element-number">6</div>
+                    <div class="element-symbol">At</div>
+                    <div class="element-name">最適化の終わりに</div>
+                </div>
+            </div>
+            <button id="back-to-title-btn">タイトルに戻る</button>
+        </div>
+        
+        <!-- Scene transition overlay -->
+        <div id="scene-transition">
+            <div id="scene-transition-title"></div>
+            <div id="scene-transition-subtitle"></div>
+        </div>
+        
+        <!-- Staff roll -->
+        <div id="staff-roll">
+            <div id="staff-roll-image"></div>
+            <div id="staff-roll-content">
+                <div id="staff-roll-title">元素の墓標</div>
+                <div id="staff-roll-credit">
+                    <div id="staff-roll-role"></div>
+                    <div id="staff-roll-name"></div>
+                </div>
+                <div id="staff-roll-thanks"></div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="game-data.js"></script>
+    <script src="game-engine.js"></script>
+</body>
+</html>
