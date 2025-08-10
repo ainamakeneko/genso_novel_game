@@ -789,27 +789,57 @@ body {
         background-size: 95%; /* モバイルでは少し大きく */
     }
     
+    /* モバイルでの背景画像調整 */
+    #background {
+        background-size: contain !important; /* coverからcontainに変更 */
+        background-position: center top !important; /* 上部を基準に */
+        opacity: 0.7 !important; /* 少し濃くして見やすく */
+    }
+    
+    /* モバイルでのゲームコンテナ調整 */
+    #game-container {
+        height: 100vh !important;
+        height: 100dvh !important; /* 動的ビューポート高さ */
+    }
+    
     .character {
-        width: 200px;
-        height: 250px;
+        width: 180px;
+        height: 220px;
     }
     
     #character-container {
-        height: 30%;
+        height: 35%;
+    }
+    
+    /* モバイルでのキャラクター位置調整 - 重なり防止 */
+    #character-left {
+        left: 5% !important;
+    }
+    
+    #character-right {
+        right: 5% !important;
+    }
+    
+    #character-center {
+        left: 50% !important;
+        transform: translateX(-50%) !important;
     }
     
     #choice-container {
-        bottom: 200px;
+        bottom: 45vh; /* テキストボックスの上に配置 */
     }
     
     #text-box {
         width: 95%;
-        padding: 20px 25px;
+        padding: 15px 20px;
+        bottom: 10px; /* より下に配置 */
+        max-height: 40vh; /* 画面の40%以下に制限 */
     }
     
     #text-content {
         font-size: 16px;
-        max-height: 200px;
+        max-height: 25vh; /* 画面の25%以下に制限 */
+        min-height: 80px; /* 最小高さを少し減らす */
     }
     
     .choice-btn {
@@ -868,5 +898,170 @@ body {
     .character.final-monologue-riku {
         width: 100vw !important;
         height: 100vh !important;
+    }
+}/* よ
+り小さなスマホ画面対応 */
+@media (max-width: 480px) {
+    #text-box {
+        width: 98%;
+        padding: 12px 18px;
+        bottom: 5px;
+        max-height: 35vh;
+        font-size: 15px;
+    }
+    
+    #text-content {
+        font-size: 15px;
+        max-height: 20vh;
+        min-height: 60px;
+        line-height: 1.5;
+    }
+    
+    #speaker-name {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+    
+    #choice-container {
+        bottom: 40vh;
+    }
+    
+    .choice-btn {
+        font-size: 15px;
+        padding: 12px 16px;
+        margin: 8px 0;
+    }
+    
+    /* 小さなスマホでのキャラクター調整 - 重なり防止 */
+    .character {
+        width: 140px !important;
+        height: 180px !important;
+    }
+    
+    #character-left {
+        left: 3% !important;
+    }
+    
+    #character-right {
+        right: 3% !important;
+    }
+    
+    #character-center {
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+    }
+    
+    #character-container {
+        height: 40%;
+    }
+    
+    /* 小さなスマホでの背景画像調整 */
+    #background {
+        background-size: contain !important;
+        background-position: center top !important;
+        opacity: 0.8 !important; /* さらに濃くして見やすく */
+    }
+}
+
+/* 横向きスマホ対応 */
+@media (max-width: 768px) and (orientation: landscape) {
+    #text-box {
+        max-height: 50vh;
+        bottom: 5px;
+    }
+    
+    #text-content {
+        max-height: 35vh;
+    }
+}/* 2人のキャ
+ラクターが同時に表示される場合の調整 */
+@media (max-width: 768px) {
+    /* 左右に2人いる場合の位置調整 */
+    #character-container:has(#character-left.visible):has(#character-right.visible) #character-left {
+        left: 5%;
+    }
+    
+    #character-container:has(#character-left.visible):has(#character-right.visible) #character-right {
+        right: 5%;
+    }
+    
+    /* 左とセンターに2人いる場合 */
+    #character-container:has(#character-left.visible):has(#character-center.visible) #character-left {
+        left: 10%;
+    }
+    
+    #character-container:has(#character-left.visible):has(#character-center.visible) #character-center {
+        left: 70%;
+        transform: translateX(-50%);
+    }
+    
+    /* センターと右に2人いる場合 */
+    #character-container:has(#character-center.visible):has(#character-right.visible) #character-center {
+        left: 30%;
+        transform: translateX(-50%);
+    }
+    
+    #character-container:has(#character-center.visible):has(#character-right.visible) #character-right {
+        right: 10%;
+    }
+}
+
+@media (max-width: 480px) {
+    /* 小さなスマホでの2人表示調整 */
+    #character-container:has(#character-left.visible):has(#character-right.visible) #character-left {
+        left: 2%;
+    }
+    
+    #character-container:has(#character-left.visible):has(#character-right.visible) #character-right {
+        right: 2%;
+    }
+    
+    #character-container:has(#character-left.visible):has(#character-center.visible) #character-left {
+        left: 5%;
+    }
+    
+    #character-container:has(#character-left.visible):has(#character-center.visible) #character-center {
+        left: 75%;
+    }
+    
+    #character-container:has(#character-center.visible):has(#character-right.visible) #character-center {
+        left: 25%;
+    }
+    
+    #character-container:has(#character-center.visible):has(#character-right.visible) #character-right {
+        right: 5%;
+    }
+}/
+* 横向きスマホでの背景調整 */
+@media (max-width: 768px) and (orientation: landscape) {
+    #background {
+        background-size: cover !important; /* 横向きではcoverを使用 */
+        background-position: center center !important;
+        opacity: 0.6 !important;
+    }
+}
+
+/* 縦長画面での背景調整 */
+@media (max-width: 768px) and (max-aspect-ratio: 2/3) {
+    #background {
+        background-size: 100% auto !important; /* 幅を100%に */
+        background-position: center top !important;
+    }
+}
+
+/* 非常に縦長の画面での調整 */
+@media (max-width: 480px) and (max-aspect-ratio: 1/2) {
+    #background {
+        background-size: 110% auto !important; /* 少し拡大 */
+        background-position: center top !important;
+    }
+}
+
+/* iPhone等の高解像度画面対応 */
+@media (max-width: 768px) and (-webkit-min-device-pixel-ratio: 2) {
+    #background {
+        background-size: contain !important;
+        background-position: center top !important;
+        opacity: 0.75 !important;
     }
 }
